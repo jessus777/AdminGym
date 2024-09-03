@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{987336C1-BCE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Application", "AdminGym.Application\AdminGym.Application.csproj", "{7B9CB1A5-64AB-4452-9EF6-4E45EF7903CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Core", "AdminGym.Core\AdminGym.Core.csproj", "{9FB1B9A2-3A80-4476-BDA8-F8C308A658E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Domain", "AdminGym.Core\AdminGym.Domain.csproj", "{9FB1B9A2-3A80-4476-BDA8-F8C308A658E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

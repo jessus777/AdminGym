@@ -1,0 +1,6 @@
+@AdminGym.WebApi_HostAddress = http://localhost:5140
+
+GET {{AdminGym.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

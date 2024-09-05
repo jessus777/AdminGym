@@ -4,6 +4,7 @@ using AdminGym.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminGym.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbEFContext))]
-    partial class ApplicationDbEFContextModelSnapshot : ModelSnapshot
+    [Migration("20240905015156_Migration_UserEntity")]
+    partial class Migration_UserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

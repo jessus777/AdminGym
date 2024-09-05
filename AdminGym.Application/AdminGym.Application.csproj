@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Infrastructure\" />
+    <Folder Include="Features\UserManagement\Dtos\" />
+    <Folder Include="Features\UserManagement\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

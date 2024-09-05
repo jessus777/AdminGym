@@ -1,4 +1,5 @@
 using AdminGym.Application.Features.UserManagement.Commands.CreateUser;
+using AdminGym.Application.Features.UserManagement.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,10 +39,13 @@ public class WeatherForecastController : ControllerBase
 
     [HttpPost]
   
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
+    public async Task<IActionResult> CreateUser(
+        [FromBody] CreateUserCommandDto user,
+        CancellationToken cancellationToken
+        )
     {
-        var result = await _mediator.Send(command);
-        if (result.Succeeded)
+        var result = await _mediator.Send(new CreateUserCommand(user), cancellationToken);
+        if (result.IsSuccess)
         {
             return Ok(result);
         }

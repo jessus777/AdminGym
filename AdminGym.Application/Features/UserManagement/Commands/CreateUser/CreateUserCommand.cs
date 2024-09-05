@@ -1,12 +1,15 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
+﻿using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.Application.Wrappers;
+using MediatR;
 
 namespace AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 public sealed class CreateUserCommand
-    : IRequest<IdentityResult>
+    : IRequest<Result<UserDto>>
 {
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public string FullName { get; set; }
-    public string PassWord { get; set; }
+    public CreateUserCommand(CreateUserCommandDto userCommand)
+    {
+        UserCommand = userCommand;
+    }
+
+    public CreateUserCommandDto UserCommand { get; set; }
 }

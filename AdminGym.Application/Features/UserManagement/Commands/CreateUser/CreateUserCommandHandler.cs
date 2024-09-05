@@ -1,35 +1,36 @@
 ﻿using AdminGym.Application.Contracts.Persistence;
+using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.Application.Wrappers;
 using AdminGym.Domain.Entities;
+using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 public sealed class CreateUserCommandHandler
-    : IRequestHandler<CreateUserCommand, IdentityResult>
+    : IRequestHandler<CreateUserCommand, Result<UserDto>>
 {
     private readonly IUserManagmentUnitOfWork _userManagmentUnitOfWork;
+    private readonly IMapper _mapper;
 
-    public CreateUserCommandHandler(IUserManagmentUnitOfWork userManagmentUnitOfWork)
+    public CreateUserCommandHandler(
+        IUserManagmentUnitOfWork userManagmentUnitOfWork, 
+        IMapper mapper
+        )
     {
         _userManagmentUnitOfWork = userManagmentUnitOfWork;
+        _mapper = mapper;
     }
 
-    public async Task<IdentityResult> Handle(
+    public async Task<Result<UserDto>> Handle(
         CreateUserCommand request,
         CancellationToken cancellationToken
         )
     {
         await _userManagmentUnitOfWork.BeginTransactionAsync();
 
-        var user = new User()
-        {
-            Email = request.Email,
-            FirstName = request.UserName,
-            DateOfBirth = DateTime.UtcNow,
-            UserName = request.UserName
-        };
+        var user = _mapper.Map<User>(request.UserCommand);
 
-        var result = await _userManagmentUnitOfWork.UserRepository.CreateUserAsync(user, request.PassWord);
+        var result = await _userManagmentUnitOfWork.UserRepository.CreateUserAsync(user, request.UserCommand.Password);
 
 
         if (result.Succeeded)
@@ -41,6 +42,7 @@ public sealed class CreateUserCommandHandler
         {
             await _userManagmentUnitOfWork.RollbackTransactionAsync();
         }
-        return result;
+        var userDto = _mapper.Map<UserDto>(user);
+        return Result<UserDto>.Success(userDto);
     }
 }

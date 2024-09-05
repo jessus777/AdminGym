@@ -19,7 +19,7 @@ public class Membership
     public DateTime EndDate { get; set; }
     public decimal Price { get; set; }
     public MembershipStatus Status { get; set; }
-    public Guid UserId { get; set; }
+    //public Guid UserId { get; set; }
     public MembershipType MembershipType { get; set; }
 
 

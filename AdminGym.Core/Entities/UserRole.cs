@@ -1,4 +1,5 @@
 ﻿using AdminGym.Domain.Common;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace AdminGym.Domain.Entities;
 public class UserRole
-    : AuditableEntity
+    : IdentityUserRole<Guid>
 {
-    public Guid UserId { get; set; } // Llave foránea al usuario
 
     public User User { get; set; } // Referencia a la entidad usuario
 
-    public Guid RoleId { get; set; } // Llave foránea al rol
 
     public Role Role { get; set; } // Referencia a la entidad rol
 }

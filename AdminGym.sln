@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Domain", "AdminGym
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Persistence", "AdminGym.Persistence\AdminGym.Persistence.csproj", "{CCE25AB8-B36C-45EC-B25B-6827B4D557D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Api", "AdminGym.Api\AdminGym.Api.csproj", "{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{CCE25AB8-B36C-45EC-B25B-6827B4D557D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE25AB8-B36C-45EC-B25B-6827B4D557D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE25AB8-B36C-45EC-B25B-6827B4D557D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{7B9CB1A5-64AB-4452-9EF6-4E45EF7903CB} = {AF9BC62A-0425-4E6E-ADA9-1B6F0FD43246}
 		{9FB1B9A2-3A80-4476-BDA8-F8C308A658E9} = {AF9BC62A-0425-4E6E-ADA9-1B6F0FD43246}
 		{CCE25AB8-B36C-45EC-B25B-6827B4D557D3} = {14EA9A90-068D-4A1E-B74F-1D2206FE182D}
+		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612} = {8D5C34CF-FE4F-4AA7-A52B-A6782466EC07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {103817D5-EF06-4381-971E-253582EF063B}

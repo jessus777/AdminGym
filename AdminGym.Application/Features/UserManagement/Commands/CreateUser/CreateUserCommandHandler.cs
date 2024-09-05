@@ -7,21 +7,19 @@ namespace AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 public sealed class CreateUserCommandHandler
     : IRequestHandler<CreateUserCommand, IdentityResult>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly UserManager<User> _userManager;
+    private readonly IUserManagmentUnitOfWork _userManagmentUnitOfWork;
 
-    public CreateUserCommandHandler(IUnitOfWork unitOfWork, UserManager<User> userManager)
+    public CreateUserCommandHandler(IUserManagmentUnitOfWork userManagmentUnitOfWork)
     {
-        _unitOfWork = unitOfWork;
-        _userManager = userManager;
+        _userManagmentUnitOfWork = userManagmentUnitOfWork;
     }
 
     public async Task<IdentityResult> Handle(
         CreateUserCommand request,
         CancellationToken cancellationToken
-        )                                                       
+        )
     {
-        await _unitOfWork.BeginTransactionAsync();
+        await _userManagmentUnitOfWork.BeginTransactionAsync();
 
         var user = new User()
         {
@@ -31,12 +29,17 @@ public sealed class CreateUserCommandHandler
             UserName = request.UserName
         };
 
-        var result = await _userManager.CreateAsync(user, request.PassWord);
+        var result = await _userManagmentUnitOfWork.UserRepository.CreateUserAsync(user, request.PassWord);
+
 
         if (result.Succeeded)
         {
-            await _unitOfWork.SaveChangesAsync();
-            await _unitOfWork.CommitTransactionAsync();
+            await _userManagmentUnitOfWork.SaveChangesAsync();
+            await _userManagmentUnitOfWork.CommitTransactionAsync();
+        }
+        else
+        {
+            await _userManagmentUnitOfWork.RollbackTransactionAsync();
         }
         return result;
     }

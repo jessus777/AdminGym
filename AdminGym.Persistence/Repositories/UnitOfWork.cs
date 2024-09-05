@@ -10,15 +10,13 @@ public class UnitOfWork
     private IDbContextTransaction _transaction;
 
     public UnitOfWork(
-        ApplicationDbEFContext context,
-        IUserRepositoryAsync userRepository
+        ApplicationDbEFContext context
         )
     {
         _context = context;
-        UserRepository = userRepository;
     }
 
-    public IUserRepositoryAsync UserRepository { get; set; }
+    
 
     public async Task BeginTransactionAsync()
     {

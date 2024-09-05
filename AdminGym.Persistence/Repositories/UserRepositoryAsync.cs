@@ -1,6 +1,7 @@
 ﻿using AdminGym.Application.Contracts.Persistence;
 using AdminGym.Domain.Entities;
 using AdminGym.Persistence.DbContexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminGym.Persistence.Repositories;
@@ -8,10 +9,13 @@ public class UserRepositoryAsync
     : IUserRepositoryAsync
 {
     private readonly ApplicationDbEFContext _context;
+    private readonly UserManager<User> _userManager;
+    
 
-    public UserRepositoryAsync(ApplicationDbEFContext context)
+    public UserRepositoryAsync(ApplicationDbEFContext context, UserManager<User> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     public async Task AddAsync(User user)
@@ -61,5 +65,19 @@ public class UserRepositoryAsync
     public async Task<bool> UserExistsAsync(Guid userId)
     {
         return await _context.Users.AnyAsync(u => u.Id == userId);
+    }
+    public async Task<IdentityResult> CreateUserAsync(User user, string password)
+    {
+        return await _userManager.CreateAsync(user, password);
+    }
+
+    public async Task<bool> UserExistsByEmailAsync(string email)
+    {
+        return await _userManager.FindByEmailAsync(email) != null;
+    }
+
+    public async Task<bool> UserExistsByUserNameAsync(string userName)
+    {
+        return await _userManager.FindByNameAsync(userName) != null;
     }
 }

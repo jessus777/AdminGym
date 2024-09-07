@@ -45,10 +45,8 @@ public class WeatherForecastController : ControllerBase
         )
     {
         var result = await _mediator.Send(new CreateUserCommand(user), cancellationToken);
-        if (result.IsSuccess)
-        {
-            return Ok(result);
-        }
-        return BadRequest(result.Errors);
+        return result.IsSuccess
+            ? Ok(result.Value)
+            : result.ToProblemDetails();
     }
 }

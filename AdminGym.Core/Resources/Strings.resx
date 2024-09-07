@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="NoSePudoObtenerInformacionSolicitada" xml:space="preserve">
+        <value>No se pudo obtener la información solicitada.</value>
+    </data>
+    <data name="NoSePudoEjecutarLaOperacionSolicitada" xml:space="preserve">
+        <value>No se pudo ejecutar la operación solicitada.</value>
+    </data>
+    <data name="TipoErrorNoValido" xml:space="preserve">
+        <value>Tipo de error no válido: {0}</value>
+    </data>
+    <data name="ElementoNoEncontrado" xml:space="preserve">
+        <value>Elemento no encontrado.</value>
+    </data>
+    <data name="NoSeEncontroElementoConId" xml:space="preserve">
+        <value>No se encontró el elemento con identificador {0}.</value>
+    </data>
+    <data name="AlgunosDatosIntroducidosNoSonValidos" xml:space="preserve">
+        <value>Algunos datos introducidos no son válidos.</value>
+    </data>
+    <data name="CodigoConsultaNoValido" xml:space="preserve">
+        <value>Código de consulta no válido: {0}.</value>
+    </data>
+    <data name="ParametrosNoProporcionados" xml:space="preserve">
+        <value>Los siguientes parámetros requeridos no fueron proporcionados: {0}</value>
+    </data>
+    <data name="ParametrosInvalidos" xml:space="preserve">
+        <value>Parámetros con valores no válidos: {0}</value>
+    </data>
+    <data name="ValorParametroNulo" xml:space="preserve">
+        <value>El valor del parámetro es nulo</value>
+    </data>
+    <data name="NoEsPosibleConvertirValorAlTipo" xml:space="preserve">
+        <value>No es posible convertir valor al tipo</value>
+    </data>
+    <data name="FormatoNoValidoParaElTipo" xml:space="preserve">
+        <value>Formato no válido para el tipo</value>
+    </data>
+    <data name="ValorGrandePequenoParaElTipo" xml:space="preserve">
+        <value>El valor es muy grande o muy pequeño para el tipo</value>
+    </data>
+    <data name="ValorParametroNoValido" xml:space="preserve">
+        <value>Valor '{0}' no válido para el parámetro '{1}'.</value>
+    </data>
+    <data name="ParametrosNoValidosParaConsulta" xml:space="preserve">
+        <value>Parámetros no válidos para la consulta {0}.</value>
+    </data>
+    <data name="ValorRequerido" xml:space="preserve">
+        <value>Valor requerido.</value>
+    </data>
+    <data name="FormatoNoValido" xml:space="preserve">
+        <value>Formato no válido.</value>
+    </data>
+    <data name="VersionNoValida" xml:space="preserve">
+        <value>Versión no válida.</value>
+    </data>
+    <data name="LongitudMaximaPermitidaX" xml:space="preserve">
+        <value>La longitud máxima permitida es de {0} caracteres.</value>
+    </data>
+    <data name="LongitudArchivoNoValida" xml:space="preserve">
+        <value>Tamaño de archivo no válido.</value>
+    </data>
+    <data name="NombreArchivoNoValido" xml:space="preserve">
+        <value>Nombre de archivo no válido.</value>
+    </data>
+    <data name="ValorNoPermitido" xml:space="preserve">
+        <value>Valor no permitido.</value>
+    </data>
+    <data name="ArchivoRequeridoNoProporcionado" xml:space="preserve">
+        <value>No se proporcionó el archivo requerido.</value>
+    </data>
+    <data name="InfoArchivoNoProporcionada" xml:space="preserve">
+        <value>No se proporcionó la información del archivo.</value>
+    </data>
+    <data name="ElementosDuplicados" xml:space="preserve">
+        <value>Elementos duplicados.</value>
+    </data>
+    <data name="ElementoDuplicado" xml:space="preserve">
+        <value>Elemento duplicado.</value>
+    </data>
+    <data name="YaExisteElementoX" xml:space="preserve">
+        <value>Ya existe un elemento identificado por el valor '{0}'.</value>
+    </data>
+    <data name="ElementoConflicto" xml:space="preserve">
+        <value>Elemento con datos en conflicto.</value>
+    </data>
+    <data name="CorreoNoExisteDirectorioActivo" xml:space="preserve">
+        <value>La dirección de correo no existe en el directorio.</value>
+    </data>
+    <data name="CorreoYaExisteConOtroRfc" xml:space="preserve">
+        <value>La dirección de correo ya existe con otro RFC.</value>
+    </data>
+    <data name="RfcProporcionadoDistintoRegistrado" xml:space="preserve">
+        <value>El RFC proporcionado es distinto al que se encuentra registrado.</value>
+    </data>
+    <data name="YaSeHaSolicitadoAccesoContratoConRol" xml:space="preserve">
+        <value>Ya se ha solicitado acceso al contrato con el rol especificado</value>
+    </data>
+    <data name="LaSolicitudNoPuedeAprobarsePorqueYaHaSidoProcesada" xml:space="preserve">
+        <value>La solicitud no puede ser aprobada porque ya ha sido procesada.</value>
+    </data>
+    <data name="LaSolicitudNoPuedeRechazarsePorqueYaHaSidoProcesada" xml:space="preserve">
+        <value>La solicitud no puede ser rechazada porque ya ha sido procesada.</value>
+    </data>
+    <data name="LaSolicitudNoPuedeCancelarsePorqueYaHaSidoProcesada" xml:space="preserve">
+        <value>La solicitud no puede ser cancelada porque ya ha sido procesada.</value>
+    </data>
+    <data name="NoSeEncontroUnidadAccesoIndividualParaCuentaUsuario" xml:space="preserve">
+        <value>No se encontró la unidad de acceso individual para la cuenta de usuario.</value>
+    </data>
+    <data name="ElRolSolicitadoNoEstaAutorizadoParaElUsuario" xml:space="preserve">
+        <value>El rol solicitado no está autorizado para el usuario.</value>
+    </data>
+    <data name="ElUsuarioYaCuentaConAccesoAlContratoConElRolSolicitado" xml:space="preserve">
+        <value>El usuario ya cuenta con acceso al contrato con el rol solicitado.</value>
+    </data>
+    <data name="LongitudArchivoNoPermitidaX" xml:space="preserve">
+        <value>El archivo excede el tamaño máximo permitido: {0}</value>
+    </data>
+    <data name="TipoArchivoNoPermitidoX" xml:space="preserve">
+        <value>Tipo de archivo no permitido: {0}.</value>
+    </data>
+    <data name="ElUsuarioYaCuentaConAccesoAlContratoSolicitado" xml:space="preserve">
+        <value>El usuario ya cuenta con acceso al contrato solicitado.</value>
+    </data>
+    <data name="YaSeHaSolicitadoAccesoContrato" xml:space="preserve">
+        <value>Ya se ha solicitado acceso al contrato.</value>
+    </data>
+    <data name="ElUsuarioYaCuentaConAccesoAlContratoEnPeriodoSolicitado" xml:space="preserve">
+        <value>El usuario ya cuenta con acceso al contrato en el período solicitado.</value>
+    </data>
+    <data name="TipoOFechasNombramientoEnConflictoConAccesoActual" xml:space="preserve">
+        <value>Tipo de nombramiento o fechas en conflicto con el acceso concedido actualmente.</value>
+    </data>
+    <data name="RengoFechasNoValido" xml:space="preserve">
+        <value>Rango de fechas no válido.</value>
+    </data>
+    <data name="YaSeHaSolicitadoAccesoContratoConRolX" xml:space="preserve">
+        <value>Ya se ha solicitado acceso al contrato con el rol {0}.</value>
+    </data>
+    <data name="ElUsuarioYaCuentaConAccesoAlContratoSolicitadoConRolX" xml:space="preserve">
+        <value>El usuario ya cuenta con acceso al contrato solicitado con el rol {0}.</value>
+    </data>
+    <data name="FechaHoraTerminoDebeSerMayorQueFechaHoraInicio" xml:space="preserve">
+        <value>La fecha y hora de término debe ser mayor que la fecha y hora de inicio.</value>
+    </data>
+    <data name="ElElementoQueSeDeseaDesactivarYaSeEncuentraDesactivado" xml:space="preserve">
+        <value>El elemento que se desea desactivar ya se encuentra desactivado.</value>
+    </data>
+    <data name="ElElementoQueSeDeseaActivarYaSeEncuentraActivo" xml:space="preserve">
+        <value>El elemento que se desea activar ya se encuentra activo.</value>
+    </data>
+</root>

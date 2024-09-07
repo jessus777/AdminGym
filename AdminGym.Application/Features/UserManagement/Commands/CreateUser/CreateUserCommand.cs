@@ -1,10 +1,11 @@
 ﻿using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.Application.Request;
 using AdminGym.Application.Wrappers;
 using MediatR;
 
 namespace AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 public sealed class CreateUserCommand
-    : IRequest<Result<UserDto>>
+    : ApplicationRequest<UserDto>
 {
     public CreateUserCommand(CreateUserCommandDto userCommand)
     {

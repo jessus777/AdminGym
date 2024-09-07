@@ -1,19 +1,20 @@
 ﻿using AdminGym.Application.Contracts.Persistence;
 using AdminGym.Application.Features.UserManagement.Dtos;
-using AdminGym.Application.Wrappers;
+using AdminGym.Application.Request;
 using AdminGym.Domain.Entities;
+using AdminGym.Domain.Errors;
 using AutoMapper;
-using MediatR;
+using FluentResults;
 
 namespace AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 public sealed class CreateUserCommandHandler
-    : IRequestHandler<CreateUserCommand, Result<UserDto>>
+    : ApplicationRequestHandler<CreateUserCommand, UserDto>
 {
     private readonly IUserManagmentUnitOfWork _userManagmentUnitOfWork;
     private readonly IMapper _mapper;
 
     public CreateUserCommandHandler(
-        IUserManagmentUnitOfWork userManagmentUnitOfWork, 
+        IUserManagmentUnitOfWork userManagmentUnitOfWork,
         IMapper mapper
         )
     {
@@ -21,10 +22,7 @@ public sealed class CreateUserCommandHandler
         _mapper = mapper;
     }
 
-    public async Task<Result<UserDto>> Handle(
-        CreateUserCommand request,
-        CancellationToken cancellationToken
-        )
+    protected override async Task<Result<UserDto>> HandleAsync(CreateUserCommand request, CancellationToken cancellationToken)
     {
         await _userManagmentUnitOfWork.BeginTransactionAsync();
 
@@ -37,12 +35,13 @@ public sealed class CreateUserCommandHandler
         {
             await _userManagmentUnitOfWork.SaveChangesAsync();
             await _userManagmentUnitOfWork.CommitTransactionAsync();
+            var userDto = _mapper.Map<UserDto>(user);
+
         }
         else
         {
             await _userManagmentUnitOfWork.RollbackTransactionAsync();
         }
-        var userDto = _mapper.Map<UserDto>(user);
-        return Result<UserDto>.Success(userDto);
+        return DomainError.EntityNotFound("xzssda");
     }
 }

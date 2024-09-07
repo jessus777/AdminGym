@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.Api", "AdminGym.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminGym.WebApi", "AdminGym.WebApi\AdminGym.WebApi.csproj", "{79F515D5-C907-4DFE-9E6C-732770C0B971}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkit", "Toolkit\Toolkit.csproj", "{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{79F515D5-C907-4DFE-9E6C-732770C0B971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F515D5-C907-4DFE-9E6C-732770C0B971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F515D5-C907-4DFE-9E6C-732770C0B971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{CCE25AB8-B36C-45EC-B25B-6827B4D557D3} = {14EA9A90-068D-4A1E-B74F-1D2206FE182D}
 		{AC8CD6D8-B686-47D6-B4A5-B10C3E0AF612} = {8D5C34CF-FE4F-4AA7-A52B-A6782466EC07}
 		{79F515D5-C907-4DFE-9E6C-732770C0B971} = {8D5C34CF-FE4F-4AA7-A52B-A6782466EC07}
+		{777DFA72-0A3B-4E11-98CA-F9A0BA9B50F8} = {AF9BC62A-0425-4E6E-ADA9-1B6F0FD43246}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {103817D5-EF06-4381-971E-253582EF063B}

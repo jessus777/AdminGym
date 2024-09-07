@@ -1,4 +1,5 @@
 ﻿using AdminGym.Domain.Errors;
+using AdminGym.WebApi.Resources;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,7 @@ public static class ResultExtensions
     )
     {
         if (result.IsSuccess || result.Errors.Count == 0)
-            throw new InvalidOperationException(Strings);
+            throw new InvalidOperationException(ResourceMessage.ErrorMessage);
 
         var firstError = result.Errors.FirstOrDefault();
 

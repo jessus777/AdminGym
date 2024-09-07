@@ -1,5 +1,6 @@
 using AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.WebApi.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

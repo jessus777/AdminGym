@@ -117,19 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ErrorMessage" xml:space="preserve">
-    <value>Resources</value>
-  </data>
-  <data name="ErrorAutenticacion" xml:space="preserve">
-    <value>Error de autenticación</value>
-  </data>
-  <data name="ErrorValidacion" xml:space="preserve">
-    <value>Error de validación.</value>
-  </data>
-  <data name="ErrorServicioExterno" xml:space="preserve">
-    <value>Error de servicio externo</value>
-  </data>
-  <data name="ErrorInternoServidor" xml:space="preserve">
-    <value>Error interno de servidor</value>
+  <data name="AlgunosDatosIntroducidosNoSonValidos" xml:space="preserve">
+    <value>Algunos datos introducidos no son válidos.</value>
   </data>
 </root>

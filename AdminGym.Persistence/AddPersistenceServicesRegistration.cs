@@ -1,4 +1,5 @@
-﻿using AdminGym.Application.Contracts.Persistence;
+﻿using AdminGym.Application.Contracts.Infrastructure;
+using AdminGym.Application.Contracts.Persistence;
 using AdminGym.Domain.Entities;
 using AdminGym.Persistence.DbContexts;
 using AdminGym.Persistence.Repositories;
@@ -43,7 +44,7 @@ namespace AdminGym.Persistence
             //.AddDeveloperSigningCredential() // Usar solo en desarrollo. Cambiar para producción.
             //.AddConfigurationStore<ApplicationDbEFContext>()
             //.AddOperationalStore<AdminGym.Persistence.DbContexts.ApplicationDbEFContext>();
-
+            //services.AddScoped<IOperationContextProvider, OperationContextProvider>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserManagmentUnitOfWork, UserManagmentUnitOfWork>();
             services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();

@@ -22,7 +22,10 @@ public sealed class CreateUserCommandHandler
         _mapper = mapper;
     }
 
-    protected override async Task<Result<UserDto>> HandleAsync(CreateUserCommand request, CancellationToken cancellationToken)
+    protected override async Task<Result<UserDto>> HandleAsync(
+        CreateUserCommand request,
+        CancellationToken cancellationToken
+        )
     {
         await _userManagmentUnitOfWork.BeginTransactionAsync();
 

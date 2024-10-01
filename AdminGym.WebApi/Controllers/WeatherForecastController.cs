@@ -1,5 +1,6 @@
 using AdminGym.Application.Features.UserManagement.Commands.CreateUser;
 using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.Application.Features.UserManagement.Queries.GetById;
 using AdminGym.WebApi.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ public class WeatherForecastController : ControllerBase
     private readonly ILogger<WeatherForecastController> _logger;
     private readonly IMediator _mediator;
 
-    
+
 
     public WeatherForecastController(ILogger<WeatherForecastController> logger, IMediator mediator)
     {
@@ -39,13 +40,25 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpPost]
-  
+
     public async Task<IActionResult> CreateUser(
         [FromBody] CreateUserCommandDto user,
         CancellationToken cancellationToken
         )
     {
         var result = await _mediator.Send(new CreateUserCommand(user), cancellationToken);
+        return result.IsSuccess
+            ? Ok(result.Value)
+            : result.ToProblemDetails();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> UserGetById(
+        [FromRoute] string id,
+        CancellationToken cancelToken
+        )
+    {
+        var result = await _mediator.Send(new GetByIdQuery(id), cancelToken);
         return result.IsSuccess
             ? Ok(result.Value)
             : result.ToProblemDetails();

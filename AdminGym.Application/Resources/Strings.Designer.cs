@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdminGym.WebApi.Resources {
+namespace AdminGym.Application.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace AdminGym.WebApi.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourceMessage {
+    internal class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMessage() {
+        internal Strings() {
         }
         
         /// <summary>
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdminGym.WebApi.Resources.ResourceMessage", typeof(ResourceMessage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdminGym.Application.Resources.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace AdminGym.WebApi.Resources {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,47 +61,11 @@ namespace AdminGym.WebApi.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error de autenticación.
+        ///   Busca una cadena traducida similar a Algunos datos introducidos no son válidos..
         /// </summary>
-        public static string ErrorAutenticacion {
+        internal static string AlgunosDatosIntroducidosNoSonValidos {
             get {
-                return ResourceManager.GetString("ErrorAutenticacion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error interno de servidor.
-        /// </summary>
-        public static string ErrorInternoServidor {
-            get {
-                return ResourceManager.GetString("ErrorInternoServidor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Resources.
-        /// </summary>
-        public static string ErrorMessage {
-            get {
-                return ResourceManager.GetString("ErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error de servicio externo.
-        /// </summary>
-        public static string ErrorServicioExterno {
-            get {
-                return ResourceManager.GetString("ErrorServicioExterno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Error de validación..
-        /// </summary>
-        public static string ErrorValidacion {
-            get {
-                return ResourceManager.GetString("ErrorValidacion", resourceCulture);
+                return ResourceManager.GetString("AlgunosDatosIntroducidosNoSonValidos", resourceCulture);
             }
         }
     }

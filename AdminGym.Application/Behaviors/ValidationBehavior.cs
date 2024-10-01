@@ -1,9 +1,11 @@
-﻿using FluentValidation;
+﻿using AdminGym.Application.Resources;
+using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 
 namespace AdminGym.Application.Behaviors;
-public class ValidationBehavior<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse>
+public sealed class ValidationBehavior<TRequest, TResult> : IPipelineBehavior<TRequest, TResult>
+    where TRequest : notnull
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -12,30 +14,25 @@ public class ValidationBehavior<TRequest, TResponse>
         _validators = validators;
     }
 
-    public async Task<TResponse> Handle(
-        TRequest request, 
-        RequestHandlerDelegate<TResponse> next, 
-        CancellationToken cancellationToken
-        )
+    public async Task<TResult> Handle(TRequest request, RequestHandlerDelegate<TResult> next, CancellationToken cancellationToken)
     {
-        if (_validators.Any())
-        {
-            var context = new ValidationContext<TRequest>(request);
+        if (!_validators.Any())
+            return await next();
 
-            var validationResults = await Task.WhenAll(
-                _validators.Select(v => v.ValidateAsync(context, cancellationToken))
-            );
+        var validationContext = new ValidationContext<TRequest>(request);
 
-            var failures = validationResults
-                .SelectMany(result => result.Errors)
-                .Where(error => error != null)
-                .ToList();
+        var validationResults = new List<ValidationResult>();
+        foreach (var validator in _validators)
+            validationResults.Add(await validator.ValidateAsync(validationContext, cancellationToken));
 
-            if (failures.Count != 0)
-            {
-                throw new ValidationException(failures);
-            }
-        }
+        var errors = (
+            from e in validationResults.SelectMany(r => r.Errors)
+            where e is not null
+            select e
+        ).ToArray();
+
+        if (errors.Length != 0)
+            throw new ValidationException(Strings.AlgunosDatosIntroducidosNoSonValidos, errors);
 
         return await next();
     }

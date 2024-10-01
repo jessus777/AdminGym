@@ -18,5 +18,6 @@ public class UserProfile
             ));
         CreateMap<User, CreateUserCommandDto>();
         CreateMap<User, UserDto>().ReverseMap();
+        CreateMap<User, UserGetByIdResponseDto>();
     }
 }

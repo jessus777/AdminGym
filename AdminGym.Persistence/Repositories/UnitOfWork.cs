@@ -1,5 +1,7 @@
 ﻿using AdminGym.Application.Contracts.Persistence;
+using AdminGym.Domain.Entities;
 using AdminGym.Persistence.DbContexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace AdminGym.Persistence.Repositories;
@@ -8,7 +10,6 @@ public class UnitOfWork
 {
     private readonly ApplicationDbEFContext _context;
     private IDbContextTransaction _transaction;
-
     public UnitOfWork(
         ApplicationDbEFContext context
         )

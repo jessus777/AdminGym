@@ -4,7 +4,7 @@ namespace AdminGym.Domain.Entities;
 public class Permission
     : AuditableEntity
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = new Guid();
 
     public string Name { get; set; } // Nombre del permiso (por ejemplo, "CreateUser", "EditUser")
 

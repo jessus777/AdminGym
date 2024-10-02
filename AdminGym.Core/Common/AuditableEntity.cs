@@ -16,6 +16,7 @@ public class AuditableEntity
     protected AuditableEntity()
     {
         CreatedDate = DateTime.UtcNow; // Se inicializa la fecha de creación al momento de instanciar la entidad
+        UpdatedDate = DateTime.UtcNow;
     }
 
 }

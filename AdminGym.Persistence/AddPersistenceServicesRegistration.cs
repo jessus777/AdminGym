@@ -48,6 +48,7 @@ namespace AdminGym.Persistence
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserManagmentUnitOfWork, UserManagmentUnitOfWork>();
             services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();
+            services.AddTransient<IPermissionRepositoryAsync, PermissionRepositoryAsync>();
             return services;
         }
     }

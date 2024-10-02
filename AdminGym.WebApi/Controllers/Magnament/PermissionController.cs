@@ -28,7 +28,7 @@ namespace AdminGym.WebApi.Controllers.Magnament
             )
         {
             var result = await _mediator.Send(
-                GetAllPermissionQuery.Instance, 
+                GetAllPermissionQuery.Instance,
                 cancellationToken
                 );
 

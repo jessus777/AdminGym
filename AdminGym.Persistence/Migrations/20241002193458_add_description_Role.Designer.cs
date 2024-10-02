@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminGym.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbEFContext))]
-    [Migration("20240905011707_InitialMigrationCreate")]
-    partial class InitialMigrationCreate
+    [Migration("20241002193458_add_description_Role")]
+    partial class add_description_Role
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,9 @@ namespace AdminGym.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<long>("Consecutivo")
+                        .HasColumnType("bigint");
+
                     b.Property<Guid>("CreatedByUserId")
                         .HasColumnType("uniqueidentifier");
 
@@ -114,8 +117,14 @@ namespace AdminGym.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PermissionType")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("UpdatedByUserId")
                         .HasColumnType("uniqueidentifier");
@@ -126,6 +135,60 @@ namespace AdminGym.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Permissions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("38c56b87-e1ac-4f7e-8210-5592cc336147"),
+                            Consecutivo = 1L,
+                            CreatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            CreatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8819),
+                            Description = "Permiso para consultar los datos",
+                            IsActive = true,
+                            Name = "Consulta",
+                            PermissionType = 1,
+                            UpdatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            UpdatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8834)
+                        },
+                        new
+                        {
+                            Id = new Guid("079037ca-3268-412d-8e94-027f0ae516bc"),
+                            Consecutivo = 2L,
+                            CreatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            CreatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8838),
+                            Description = "Permiso para capturar los datos",
+                            IsActive = true,
+                            Name = "Escritura",
+                            PermissionType = 2,
+                            UpdatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            UpdatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8839)
+                        },
+                        new
+                        {
+                            Id = new Guid("7f51c649-2241-49cd-a6b9-4480619f8dad"),
+                            Consecutivo = 3L,
+                            CreatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            CreatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8842),
+                            Description = "Permiso para editar los datos",
+                            IsActive = true,
+                            Name = "Modificación",
+                            PermissionType = 3,
+                            UpdatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            UpdatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8843)
+                        },
+                        new
+                        {
+                            Id = new Guid("59f84721-14d7-40cf-aba7-d2f7857bed0f"),
+                            Consecutivo = 4L,
+                            CreatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            CreatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8845),
+                            Description = "Permiso para eliminar los datos",
+                            IsActive = true,
+                            Name = "Eliminación",
+                            PermissionType = 4,
+                            UpdatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            UpdatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(8847)
+                        });
                 });
 
             modelBuilder.Entity("AdminGym.Domain.Entities.Role", b =>
@@ -136,6 +199,9 @@ namespace AdminGym.Persistence.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -158,8 +224,10 @@ namespace AdminGym.Persistence.Migrations
 
             modelBuilder.Entity("AdminGym.Domain.Entities.RolePermission", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PermissionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CreatedByUserId")
@@ -168,25 +236,17 @@ namespace AdminGym.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PermissionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("UpdatedByUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("RoleId", "PermissionId");
 
                     b.HasIndex("PermissionId");
 
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("RolePermission");
+                    b.ToTable("RolePermissions");
                 });
 
             modelBuilder.Entity("AdminGym.Domain.Entities.User", b =>
@@ -218,7 +278,7 @@ namespace AdminGym.Persistence.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -229,6 +289,9 @@ namespace AdminGym.Persistence.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MaternalSurname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -241,11 +304,17 @@ namespace AdminGym.Persistence.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PaternalSurname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("SecondName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -274,6 +343,34 @@ namespace AdminGym.Persistence.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "14dd5825-5153-41c8-aa39-0bf9a4394c10",
+                            CreatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            CreatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(9974),
+                            DateOfBirth = new DateTime(1993, 2, 9, 0, 24, 37, 519, DateTimeKind.Unspecified),
+                            Email = "jessusjim777@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Jesus",
+                            IsActive = true,
+                            LockoutEnabled = true,
+                            MaternalSurname = "Rendon",
+                            NormalizedEmail = "JESSUSJIM777@GMAIL.COM",
+                            NormalizedUserName = "JESUSJIMENEZRENDON",
+                            PasswordHash = "AQAAAAIAAYagAAAAENpFn/u7fakTfDIwCPuaPStDtsITAZfLTIjWae8tj4V1QsEY+pv7F+Ua9uQAexh+AA==",
+                            PaternalSurname = "Jimenez",
+                            PhoneNumber = "7471773358",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "",
+                            SecurityStamp = "HMNPVRUUVQXQZN2JF3YRB27KUX2FXGAB",
+                            TwoFactorEnabled = false,
+                            UpdatedByUserId = new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"),
+                            UpdatedDate = new DateTime(2024, 10, 2, 13, 34, 57, 891, DateTimeKind.Local).AddTicks(9975)
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -415,7 +512,7 @@ namespace AdminGym.Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("AdminGym.Domain.Entities.Role", "Role")
-                        .WithMany()
+                        .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -487,6 +584,8 @@ namespace AdminGym.Persistence.Migrations
 
             modelBuilder.Entity("AdminGym.Domain.Entities.Role", b =>
                 {
+                    b.Navigation("RolePermissions");
+
                     b.Navigation("UserRoles");
                 });
 

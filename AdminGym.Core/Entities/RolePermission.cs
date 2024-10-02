@@ -10,11 +10,9 @@ namespace AdminGym.Domain.Entities;
 public class RolePermission
     : AuditableEntity
 {
-    public Guid Id { get; set; }  // Clave primaria
     public Guid RoleId { get; set; }
-    public Role Role { get; set; } // Referencia a la entidad rol
+    public Role Role { get; set; }
 
-    public Guid PermissionId { get; set; } // Llave foránea al permiso
-
-    public Permission Permission { get; set; } // Referencia a la entidad permiso
+    public Guid PermissionId { get; set; }
+    public Permission Permission { get; set; }
 }

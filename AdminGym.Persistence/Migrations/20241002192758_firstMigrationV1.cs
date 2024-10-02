@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace AdminGym.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrationCreate : Migration
+    public partial class firstMigrationV1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +32,10 @@ namespace AdminGym.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecondName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaternalSurname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaternalSurname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -82,6 +87,9 @@ namespace AdminGym.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PermissionType = table.Column<int>(type: "int", nullable: false),
+                    Consecutivo = table.Column<long>(type: "bigint", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -227,10 +235,9 @@ namespace AdminGym.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RolePermission",
+                name: "RolePermissions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PermissionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -240,19 +247,35 @@ namespace AdminGym.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RolePermission", x => x.Id);
+                    table.PrimaryKey("PK_RolePermissions", x => new { x.RoleId, x.PermissionId });
                     table.ForeignKey(
-                        name: "FK_RolePermission_AspNetRoles_RoleId",
+                        name: "FK_RolePermissions_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RolePermission_Permissions_PermissionId",
+                        name: "FK_RolePermissions_Permissions_PermissionId",
                         column: x => x.PermissionId,
                         principalTable: "Permissions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedByUserId", "CreatedDate", "DateOfBirth", "Email", "EmailConfirmed", "FirstName", "IsActive", "LockoutEnabled", "LockoutEnd", "MaternalSurname", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PaternalSurname", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "TwoFactorEnabled", "UpdatedByUserId", "UpdatedDate", "UserName" },
+                values: new object[] { new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), 0, "14dd5825-5153-41c8-aa39-0bf9a4394c10", new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(7577), new DateTime(1993, 2, 9, 0, 24, 37, 519, DateTimeKind.Unspecified), "jessusjim777@gmail.com", false, "Jesus", true, true, null, "Rendon", "JESSUSJIM777@GMAIL.COM", "JESUSJIMENEZRENDON", "AQAAAAIAAYagAAAAENpFn/u7fakTfDIwCPuaPStDtsITAZfLTIjWae8tj4V1QsEY+pv7F+Ua9uQAexh+AA==", "Jimenez", "7471773358", false, "", "HMNPVRUUVQXQZN2JF3YRB27KUX2FXGAB", false, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(7580), null });
+
+            migrationBuilder.InsertData(
+                table: "Permissions",
+                columns: new[] { "Id", "Consecutivo", "CreatedByUserId", "CreatedDate", "Description", "IsActive", "Name", "PermissionType", "UpdatedByUserId", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { new Guid("079037ca-3268-412d-8e94-027f0ae516bc"), 2L, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6162), "Permiso para capturar los datos", true, "Escritura", 2, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6163) },
+                    { new Guid("38c56b87-e1ac-4f7e-8210-5592cc336147"), 1L, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6123), "Permiso para consultar los datos", true, "Consulta", 1, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6154) },
+                    { new Guid("59f84721-14d7-40cf-aba7-d2f7857bed0f"), 4L, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6179), "Permiso para eliminar los datos", true, "Eliminación", 4, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6181) },
+                    { new Guid("7f51c649-2241-49cd-a6b9-4480619f8dad"), 3L, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6171), "Permiso para editar los datos", true, "Modificación", 3, new Guid("2c4c9995-bb28-48ec-b996-08dce30ff7b4"), new DateTime(2024, 10, 2, 13, 27, 57, 891, DateTimeKind.Local).AddTicks(6172) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -300,14 +323,9 @@ namespace AdminGym.Persistence.Migrations
                 column: "MembershipTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermission_PermissionId",
-                table: "RolePermission",
+                name: "IX_RolePermissions_PermissionId",
+                table: "RolePermissions",
                 column: "PermissionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RolePermission_RoleId",
-                table: "RolePermission",
-                column: "RoleId");
         }
 
         /// <inheritdoc />
@@ -332,7 +350,7 @@ namespace AdminGym.Persistence.Migrations
                 name: "Memberships");
 
             migrationBuilder.DropTable(
-                name: "RolePermission");
+                name: "RolePermissions");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

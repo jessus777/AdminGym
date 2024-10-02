@@ -7,4 +7,7 @@ public interface IPermissionRepositoryAsync
         Permission permisson,
         CancellationToken cancellation
         );
+    Task<IEnumerable<Permission>> GetAllPermissionAsync(
+        CancellationToken cancellation
+        );
 }

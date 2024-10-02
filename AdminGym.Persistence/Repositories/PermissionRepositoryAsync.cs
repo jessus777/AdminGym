@@ -1,11 +1,7 @@
-﻿using AdminGym.Application.Contracts.Infrastructure;
-using AdminGym.Application.Contracts.Persistence;
-using AdminGym.Application.Features.UserManagement.Dtos;
+﻿using AdminGym.Application.Contracts.Persistence;
 using AdminGym.Domain.Entities;
 using AdminGym.Persistence.DbContexts;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminGym.Persistence.Repositories
 {
@@ -20,12 +16,19 @@ namespace AdminGym.Persistence.Repositories
         }
 
         public async Task<Permission> CreatePermissionAsync(
-            Permission permisson, 
+            Permission permisson,
             CancellationToken cancellationToken
             )
         {
             var entityEntry = await _context.Permissions.AddAsync(permisson, cancellationToken);
             return entityEntry.Entity;
+        }
+
+        public async Task<IEnumerable<Permission>> GetAllPermissionAsync(
+            CancellationToken cancellation
+            )
+        {
+            return await _context.Permissions.ToListAsync(cancellation);
         }
     }
 }

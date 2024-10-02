@@ -1,5 +1,6 @@
 ﻿using AdminGym.Application.Features.UserManagement.Commands.CreatePermission;
 using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.Application.Features.UserManagement.Queries.GetAllPermission;
 using AdminGym.WebApi.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,18 @@ namespace AdminGym.WebApi.Controllers.Magnament
 
         // GET: api/<PermissionController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAllPermission(
+            CancellationToken cancellationToken
+            )
         {
-            return new string[] { "value1", "value2" };
+            var result = await _mediator.Send(
+                GetAllPermissionQuery.Instance, 
+                cancellationToken
+                );
+
+            return result.IsSuccess
+               ? Ok(result.Value)
+               : result.ToProblemDetails();
         }
 
         // GET api/<PermissionController>/5
@@ -49,7 +59,7 @@ namespace AdminGym.WebApi.Controllers.Magnament
 
         // PUT api/<PermissionController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 

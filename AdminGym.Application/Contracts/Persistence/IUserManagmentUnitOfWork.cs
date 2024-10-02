@@ -5,5 +5,6 @@
     {
         IUserRepositoryAsync UserRepository { get; }
         IPermissionRepositoryAsync PermissionRepository { get; }
+        IRoleRepositoryAsync RoleRepository { get; }
     }
 }

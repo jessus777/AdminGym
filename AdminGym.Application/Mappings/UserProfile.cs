@@ -21,5 +21,7 @@ public class UserProfile
         CreateMap<User, UserGetByIdResponseDto>();
         CreateMap<CreatePermissionDto, Permission>();
         CreateMap<Permission, PermissionDto>();
+        CreateMap<CreateRoleDto, Role>();
+        CreateMap<Role, RoleDto>();
     }
 }

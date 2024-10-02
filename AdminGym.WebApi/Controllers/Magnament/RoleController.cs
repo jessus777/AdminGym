@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AdminGym.Application.Features.UserManagement.Commands.CreateRole;
+using AdminGym.Application.Features.UserManagement.Dtos;
+using AdminGym.WebApi.Extensions;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,6 +12,13 @@ namespace AdminGym.WebApi.Controllers.Magnament;
 [Tags("Magnament: Roles")]
 public class RoleController : ControllerBase
 {
+    private readonly IMediator _mediator;
+
+    public RoleController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
     // GET: api/<RoleController>
     [HttpGet]
     public IEnumerable<string> Get()
@@ -24,8 +35,15 @@ public class RoleController : ControllerBase
 
     // POST api/<RoleController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task<IActionResult> CreateRole(
+        [FromBody] CreateRoleDto role,
+        CancellationToken cancellationToken
+        )
     {
+        var result = await _mediator.Send(new CreateRoleCommand(role), cancellationToken);
+        return result.IsSuccess
+            ? Ok(result.Value)
+            : result.ToProblemDetails();
     }
 
     // PUT api/<RoleController>/5
